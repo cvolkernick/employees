@@ -1,0 +1,31 @@
+﻿@using WebApplication1.ViewModels
+@model EmployeeListViewModel
+
+@{
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+@section TitleSection {
+    MyView
+}
+
+@section ContentBody {    
+    <div>
+        @{
+            Html.RenderAction("GetAddNewLink");
+        }
+        <table border="1">
+            <tr>
+                <th>Employee Name</th>
+                <th>Salary</th>
+            </tr>
+            @foreach (EmployeeViewModel item in Model.Employees)
+            {
+                <tr>
+                    <td>@item.EmployeeName</td>
+                    <td style="background-color:@item.SalaryColor">@item.Salary</td>
+                </tr>
+            }
+        </table>
+    </div>
+}
